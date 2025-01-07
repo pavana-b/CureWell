@@ -58,7 +58,16 @@ export class CurewellService {
   //editSurgery
   editSurgery(doctorId: number, endTime: number, startTime: number, surgeryCategory: string, surgeryDate: Date, surgeryId: number): Observable<boolean> {
     //To do implement necessary logic
-    return null;
+    var surjeryObj = {
+      doctorId: doctorId,
+      endTime: endTime,
+      startTime: startTime,
+      surgeryCategory: surgeryCategory,
+      surgeryDate: surgeryDate,
+      surgeryId: surgeryId,
+    }
+    var url = this.http.put<boolean>('https://localhost:7029/api/CureWell/UpdateSurgery', surjeryObj).pipe(catchError(this.errorHandler));
+    return url;
   }
 
   //RemoveDoctor
@@ -70,7 +79,8 @@ export class CurewellService {
   //ErrorHandler
   errorHandler(error: HttpErrorResponse) {
     //To do implement necessary logic
-    return throwError(error.message || 'ERROR')
+    console.log(error.message);
+    return throwError(error.message || 'SERVER ERROR')
 
   }
 
