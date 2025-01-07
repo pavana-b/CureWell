@@ -17,10 +17,23 @@ export class UpdateDoctorComponent implements OnInit {
   constructor(private route: ActivatedRoute, private _cureWellService: CurewellService, private router: Router) { }
 
   ngOnInit() {
-     //To do implement necessary logic
+    //To do implement necessary logic
+    this.doctorId = this.route.snapshot.params['doctorId'];
+    this.doctorName = this.route.snapshot.params['doctorName'];
   }
 
-  editDoctorDetails(doctorname: string) {
+  editDoctorDetails(doctorName: string) {
     //To do implement necessary logic
+    this._cureWellService.editDoctorDetails(this.doctorId, doctorName).subscribe(
+      resposneEditDoctor => {
+        this.status = resposneEditDoctor
+        alert("Updated doctor detials succesfully")
+      },
+      responseEditDoctorError => {
+        this.errorMsg = responseEditDoctorError;
+        console.log(this.errorMsg);
+      },
+      () => console.log("Updated doctor detials succesfully")
+    );
   }
 }

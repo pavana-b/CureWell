@@ -42,17 +42,17 @@ export class CurewellService {
   //AddDoctor
   addDoctor(doctorName: string): Observable<boolean> {
     //To do implement necessary logic
-    debugger;
     var docObj: Doctor = { doctorId: 0, doctorName: doctorName }
     let url = this.http.post<boolean>('https://localhost:7029/api/CureWell/AddDoctor', docObj).pipe(catchError(this.errorHandler));
-    debugger;
     return url;
   }
 
   //EditDoctor
   editDoctorDetails(doctorId: number, doctorName: string): Observable<boolean> {
     //To do implement necessary logic
-    return null;
+    var docObj: Doctor = { doctorId: doctorId, doctorName: doctorName }
+    var url = this.http.put<boolean>('https://localhost:7029/api/CureWell/UpdateDoctorDetails', docObj).pipe(catchError(this.errorHandler));
+    return url;
   }
 
   //editSurgery

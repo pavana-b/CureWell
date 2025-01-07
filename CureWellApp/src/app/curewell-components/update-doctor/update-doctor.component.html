@@ -1,14 +1,14 @@
 <div class="myContent">
   <div class="container">
     <!--Add angular form logic here-->
-    <form #updateDoctorForm>
+    <form #updateDoctorForm="ngForm" (ngSubmit)="editDoctorDetails(doctorname.value)">
       <h2 style="text-align:center">Update Doctor</h2>
       <h6 style="text-align:center;color:dimgrey;font-size:small">All fields are mandatory</h6>
       <table align="center">
         <tr>
           <th align="justify"> <label>Doctor Id</label> </th>
           <th>
-            <input type="text" id="doctorID" name="doctorId" #docId  class="form-control qkinput" >
+            <input type="text" id="doctorID" name="doctorId" [ngModel]="doctorId" #docId  class="form-control qkinput" readonly>
           </th>
         </tr>
         <tr></tr>
@@ -18,8 +18,14 @@
           <th align="justify"> <label>Doctor Name</label> </th>
           <th>
             <!--Add angular form logic here-->
-            <input type="text" id="docname" class="form-control qkinput" name="doctorname" #doctorname>
+            <input type="text" id="docname" class="form-control qkinput" name="doctorname" #doctorname="ngModel" [ngModel]="doctorName" min="1" required ngModel>
             <!--Add your validation logic here-->
+            <div *ngIf="doctorname.errors" class="text-danger-validation">
+              <div [hidden]="!doctorname?.errors['required']">
+                <br/>
+                Please enter the name.
+              </div>
+            </div>
           </th>
         </tr>
         <tr></tr>
