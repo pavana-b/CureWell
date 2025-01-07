@@ -35,7 +35,7 @@ export class ViewTodaysSurgeryComponent implements OnInit {
 
   editSurgery(surgery: Surgery) {
     //To do implement necessary logic
-    this.router.navigate(['/editSurgery', surgery.doctorId, surgery.endTime, surgery.startTime, surgery.surgeryCategory, surgery.surgeryDate, surgery.surgeryId]);
+    this.router.navigate(['/editSurgery', surgery.doctorId, surgery.endTime, surgery.startTime, surgery.surgeryCategory, surgery.surgeryDate, surgery.surgeryId, ]);
   }
 
 }

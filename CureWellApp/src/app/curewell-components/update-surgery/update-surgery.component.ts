@@ -25,8 +25,8 @@ export class UpdateSurgeryComponent implements OnInit {
     this.doctorId = this.route.snapshot.params['doctorId'];
     this.surgeryId = this.route.snapshot.params['surgeryId'];
     this.surgeryDate = this.route.snapshot.params['surgeryDate'];
-    this.startTime = this.route.snapshot.params['startTime'];
-    this.endTime = this.route.snapshot.params['endTime'];
+    this.startTime = parseFloat(this.route.snapshot.params['startTime']);
+    this.endTime = parseFloat(this.route.snapshot.params['endTime']);
     this.surgeryCategory = this.route.snapshot.params['surgeryCategory'];
   }
 
