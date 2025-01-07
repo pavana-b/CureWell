@@ -73,7 +73,9 @@ export class CurewellService {
   //RemoveDoctor
   deleteDoctor(doctor: Doctor) {
     //To do implement necessary logic
-    return null;
+    let httpOptions = { headers: new HttpHeaders({ 'Content-type': 'application/json' }), body: doctor };
+    var url = this.http.delete<boolean>('https://localhost:7029/api/CureWell/DeleteDoctor', httpOptions).pipe(catchError(this.errorHandler));
+    return url;
   }
 
   //ErrorHandler

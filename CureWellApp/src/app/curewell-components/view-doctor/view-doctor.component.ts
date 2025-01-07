@@ -42,6 +42,18 @@ export class ViewDoctorComponent implements OnInit {
 
   removeDoctor(doctor: Doctor) {
     //To do implement necessary logic
+    this._curewellService.deleteDoctor(doctor).subscribe(
+      responseRemove => {
+        this.status = responseRemove;
+        if (this.status) {
+          alert("Doctor details deleted succesfully");
+        }
+      },
+      responseError => {
+        this.errorMsg = responseError;
+        alert(this.errorMsg)
+      }
+    )
   }
 
 }
